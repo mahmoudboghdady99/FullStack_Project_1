@@ -1,0 +1,83 @@
+﻿
+
+
+@model List<EmployeeModel>;
+
+
+
+<div class="container">
+<h3> welcome in Employees List Page </h3>
+
+    <div class="row">
+        @foreach(var Employee in Model)
+        {
+
+                <!-- نستخدم col-md-4 لتوزيع الأعمدة -->
+            <div class="col-md-4">
+
+                    <div class="card">
+                        <img src="~/Images/@Employee.ImageName" alt="Mike" style="width:100%; height:200px;">
+                        <div class="container">
+                            <h2>@Employee.Name</h2>
+                            <p class="title">@Employee.Title</p>
+                            <p>@Employee.Description</p>
+                    @{
+                            var parms = new Dictionary<string, string>
+                            {
+                                {"id", Employee.Id.ToString()},
+                                {"name", Employee.Name}
+                            };
+                    }
+
+
+                        <p><a asp-controller="Employees" asp-action="Details" asp-all-route-data="parms" class="button">Contact</a></p>
+                        </div>
+                    </div>
+            </div>
+  
+        }
+    </div>
+
+@* الجزء الثانى من الصفحة الجدول *@
+<div class="row">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Employee Name</th>
+                <th scope="col">Title</th>
+                <th scope="col">Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var employee in Model)
+            {
+                <tr>
+                    <th scope="row">@employee.Id</th>
+                    <td>@employee.Name</td>
+                    <td>@employee.Title</td>
+                    <td>@employee.Description</td>
+                </tr>
+            }
+          
+          
+        </tbody>
+    </table>
+</div>
+
+@* <div class="column">
+    <div class="card">
+        <img src="~/Images/2.jpg" alt="Mike" style="width:100%; height:200px;">
+        <div class="container">
+            <h2>SalesMan.Name</h2>
+            <p class="title">Art Director</p>
+            <p>SalesMan.Description</p>
+            <p>example@example.com</p>
+            <p><a href="/Employees/Details" class="button">Contact</a></p>
+        </div>
+    </div>
+</div>
+
+ *@
+
+</div>
