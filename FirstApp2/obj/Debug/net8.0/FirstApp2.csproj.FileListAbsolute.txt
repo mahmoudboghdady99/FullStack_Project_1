@@ -26,3 +26,4 @@ C:\Users\User\source\repos\FirstApp2\FirstApp2\obj\Debug\net8.0\ref\FirstApp2.dl
 C:\Users\User\source\repos\FirstApp2\FirstApp2\bin\Debug\net8.0\FirstApp2.staticwebassets.runtime.json
 C:\Users\User\source\repos\FirstApp2\FirstApp2\obj\Debug\net8.0\FirstApp2.RazorAssemblyInfo.cache
 C:\Users\User\source\repos\FirstApp2\FirstApp2\obj\Debug\net8.0\FirstApp2.RazorAssemblyInfo.cs
+C:\Users\User\source\repos\FirstApp2\FirstApp2\obj\Debug\net8.0\FirstApp2.sourcelink.json

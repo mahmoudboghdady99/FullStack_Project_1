@@ -3,12 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\User\\source\\repos\\FirstApp2\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{09CE0CBC-A777-4128-9BF9-D8EF6694160D}|FirstApp2\\FirstApp2.csproj|c:\\users\\user\\source\\repos\\firstapp2\\firstapp2\\views\\employees\\list.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{09CE0CBC-A777-4128-9BF9-D8EF6694160D}|FirstApp2\\FirstApp2.csproj|solutionrelative:firstapp2\\views\\employees\\list.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{09CE0CBC-A777-4128-9BF9-D8EF6694160D}|FirstApp2\\FirstApp2.csproj|c:\\users\\user\\source\\repos\\firstapp2\\firstapp2\\controllers\\employees.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{09CE0CBC-A777-4128-9BF9-D8EF6694160D}|FirstApp2\\FirstApp2.csproj|solutionrelative:firstapp2\\controllers\\employees.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{09CE0CBC-A777-4128-9BF9-D8EF6694160D}|FirstApp2\\FirstApp2.csproj|c:\\users\\user\\source\\repos\\firstapp2\\firstapp2\\areas\\landingpages\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{09CE0CBC-A777-4128-9BF9-D8EF6694160D}|FirstApp2\\FirstApp2.csproj|solutionrelative:firstapp2\\areas\\landingpages\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -23,28 +19,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "List.cshtml",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\FirstApp2\\FirstApp2\\Views\\Employees\\List.cshtml",
-              "RelativeDocumentMoniker": "FirstApp2\\Views\\Employees\\List.cshtml",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\FirstApp2\\FirstApp2\\Views\\Employees\\List.cshtml",
-              "RelativeToolTip": "FirstApp2\\Views\\Employees\\List.cshtml",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAswEsAAABKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-13T08:51:46.026Z",
-              "IsPinned": true,
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Employees.cs",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\FirstApp2\\FirstApp2\\Controllers\\Employees.cs",
-              "RelativeDocumentMoniker": "FirstApp2\\Controllers\\Employees.cs",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\FirstApp2\\FirstApp2\\Controllers\\Employees.cs",
-              "RelativeToolTip": "FirstApp2\\Controllers\\Employees.cs",
-              "ViewState": "AgIAABgAAAAAAAAAAAAgwC4AAAAAAAAAAAAAAA==",
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\FirstApp2\\FirstApp2\\Areas\\LandingPages\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "FirstApp2\\Areas\\LandingPages\\Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\FirstApp2\\FirstApp2\\Areas\\LandingPages\\Controllers\\HomeController.cs*",
+              "RelativeToolTip": "FirstApp2\\Areas\\LandingPages\\Controllers\\HomeController.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-13T10:37:27.288Z",
+              "WhenOpened": "2024-10-15T07:24:39.596Z",
               "EditorCaption": ""
             }
           ]

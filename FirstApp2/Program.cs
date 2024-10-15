@@ -32,8 +32,16 @@ namespace FirstApp2
 				endpoints.MapControllerRoute(
 				name: "ali",
 				pattern: "ali/{controller=Home}/{action=Index}/{id?}");
-			
-		});
+
+				endpoints.MapControllerRoute(
+				name: "admin",
+				pattern: "{area:exists}/{controller=Home}/{action=Index}");
+
+                endpoints.MapControllerRoute(
+				name: "LandingPages",
+				pattern: "{area:exists}/{controller=Home}/{action=Index}");
+
+            });
 
 
 
