@@ -1,47 +1,24 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using FirstApp2.Models;
 
+using FirstApp2.BL; // يجب إضافة الـ namespace الجديد الذي يحتوي على الكلاس
+
 namespace FirstApp2.Controllers
 {
     public class Employees : Controller
     {
-        List<EmployeeModel> LstEmployees;
-        void createEmployeesList()
-        {
-            LstEmployees = new List<EmployeeModel>();
-            EmployeeModel model = new EmployeeModel();
-            model.Id = 1;
-            model.Name = "Iron Man";
-            model.Title = "Innovation";
-            model.Description = "Description";
-            model.ImageName = "1.jpg";
-            LstEmployees.Add(model);
 
-            model = new EmployeeModel();
-            model.Id = 2;
-            model.Name = "BatMan";
-            model.Title = "Developer";
-            model.Description = "Description";
-            model.ImageName = "2.jpg";
-            LstEmployees.Add(model);
+        ClsEmployee employeeService = new ClsEmployee();  // تعديل اسم الكلاس
 
-            model = new EmployeeModel();
-            model.Id = 3;
-            model.Name = "Joie Doe";
-            model.Title = "Actross";
-            model.Description = "Description";
-            model.ImageName = "3.jpg";
-            LstEmployees.Add(model);
-        }
+
         public IActionResult List()
         {
-            createEmployeesList();
+            var LstEmployees = employeeService.GetData();  // استدعاء الميثود GetData
             return View(LstEmployees);
         }
         public IActionResult Details(int id, string name)
         {
-            createEmployeesList();
-            var myEmployee = LstEmployees.Where(a => a.Id == id).FirstOrDefault();
+            var myEmployee = employeeService.GetData().FirstOrDefault(a => a.Id == id);  // أو استخدم Find لو قمت بتعديلها
             return View(myEmployee);
         }
 
