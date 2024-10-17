@@ -10,6 +10,7 @@ namespace FirstApp2.BL
             EmployeeModel model = new EmployeeModel();
             model.Id = 1;
             model.Name = "Iron Man";
+            model.Department = "Sales";
             model.Title = "Innovation";
             model.Description = "Description";
             model.ImageName = "1.jpg";
@@ -18,6 +19,7 @@ namespace FirstApp2.BL
             model = new EmployeeModel();
             model.Id = 2;
             model.Name = "BatMan";
+            model.Department = "Development";
             model.Title = "Developer";
             model.Description = "Description";
             model.ImageName = "2.jpg";
@@ -26,6 +28,7 @@ namespace FirstApp2.BL
             model = new EmployeeModel();
             model.Id = 3;
             model.Name = "Joie Doe";
+            model.Department = "Arts";
             model.Title = "Actross";
             model.Description = "Description";
             model.ImageName = "3.jpg";

@@ -25,27 +25,29 @@ namespace FirstApp2
 
 			app.UseEndpoints(endpoints =>
 			{
-				endpoints.MapControllerRoute(
-				name: "default",
-				pattern: "{controller=Home}/{action=Index}/{id?}");
-
-				endpoints.MapControllerRoute(
-				name: "ali",
-				pattern: "ali/{controller=Home}/{action=Index}/{id?}");
-
-				endpoints.MapControllerRoute(
-				name: "admin",
-				pattern: "{area:exists}/{controller=Home}/{action=Index}");
+                endpoints.MapControllerRoute(
+				 name: "admin",
+				 pattern: "{area:exists}/{controller=Home}/{action=Index}");
 
                 endpoints.MapControllerRoute(
-				name: "LandingPages",
-				pattern: "{area:exists}/{controller=Home}/{action=Index}");
+                name: "LandingPages",
+                pattern: "{area:exists}/{controller=Home}/{action=Index}");
+
+                endpoints.MapControllerRoute(
+                name: "default",
+                pattern: "{controller=Employees}/{action=List}/{id?}");
+
+                endpoints.MapControllerRoute(
+                name: "ali",
+                pattern: "ali/{controller=Home}/{action=Index}/{id?}");
+
 
             });
 
 
 
-			app.MapGet("/", () => "Hello World!");
+	
+		
 
 			app.Run();
 		}
