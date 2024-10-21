@@ -1,0 +1,162 @@
+﻿@using FirstApp2.Models
+
+@model  Invoice
+
+
+<div class="card-body col-9">
+    <h4 class="card-title">Employee</h4>
+    <p class="card-description"> Add New Or Edit </p>
+
+    <form method="post" enctype="multipart/form-data"
+          asp-controller="Invoice" asp-action="Save" role="form">
+
+        <!-- Invoice Number -->
+        <div class="form-group">
+            <label for="exampleInputUsername1">Invoice Number </label>
+            <input type="text" class="form-control" placeholder="Invoice Number"
+                   asp-for="InvoiceNumber">
+            <span asp-validation-for="InvoiceNumber" class="text-danger"></span>
+        </div>
+
+        <!-- Invoice Date -->
+        <div class="form-group">
+            <label for="exampleInputEmail1"> Date </label>
+            <input type="date" class="form-control" id="exampleInputEmail1" placeholder="Date"
+                   asp-for="InvoiceDate">
+            <span asp-validation-for="InvoiceDate" class="text-danger"></span>
+        </div>
+
+        <!-- Customer -->
+        <div class="form-group">
+            <label for="exampleInputEmail1">Customer</label>
+            <select asp-for="CustomerId" asp-items="@(new SelectList(ViewBag.Customers, "Id", "Name"))" class="form-control">
+            </select>
+            <span asp-validation-for="CustomerId" class="text-danger"></span>
+        </div>
+
+        <!-- Shipping -->
+        <div class="form-group">
+            <label for="exampleInputEmail1">Shipping</label>
+            <input type="checkbox" asp-for="HasShipping" checked="@Model.HasShipping" class="form-check-label" />
+            <span asp-validation-for="HasShipping" class="text-danger"></span>
+        </div>
+
+        <!-- Description -->
+        <div class="form-group">
+            <label for="exampleInputConfirmDescription">Description</label>
+            <textarea class="form-control" placeholder="Description"
+                      asp-for="Description"></textarea>
+        </div>
+
+        <!-- Photo -->
+        <div class="form-group">
+            <label for="exampleInputConfirmPhoto">Photo</label>
+            <input type="file" class="form-control" placeholder="Photo">
+        </div>
+
+        <!--table -->
+
+        <table id="DataTable" class="table col-9  table-success table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Price</th>
+                
+                </tr>
+            </thead>
+            <tbody>
+                @for(int i =0; i < Model.InvoiceItems.Count; i ++)
+                {
+                    <tr>
+                    
+                       
+                        <td>
+                            <input asp-for="@Model.InvoiceItems[i].Quantity" class="formInput-@i" />
+                            <span asp-validation-for="@Model.InvoiceItems[i].Quantity"></span>
+                        </td>
+                        <td>
+                            <input asp-for="@Model.InvoiceItems[i].Price" class="formInput-@i" />
+                            <span asp-validation-for="@Model.InvoiceItems[i].Price"></span>
+                        </td>
+                        <td>
+                            <input type="button" class="btn btn-danger" value="Delete" onclick="Delete(this)" />
+                  
+
+                    </tr>
+                }
+            
+             
+            </tbody>
+        </table>
+
+
+
+        <!-- Submit Button -->
+        <div class=" mt-3 "> 
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="reset" class="btn btn-secondary">Cancel</button>
+
+        <button type="button" class="btn btn-info" onclick="AddRow()">
+
+         Add New Item
+        </button>
+         </div>
+
+        <input type="hidden" id="lastIndex" value="0" />
+
+    </form> <!-- وسم الإغلاق هنا -->
+</div>
+ 
+@section Scripts
+{
+    <script>
+        $(document).ready(function () {
+            var table = document.getElementById("DataTable");
+            if (table) { // تأكد من أن الجدول موجود
+                var rows = table.getElementsByTagName("tr");
+                document.getElementById("lastIndex").value = parseInt(rows.length) - 2;
+            }
+        });
+
+        function SetLastIndex() {
+            var table = document.getElementById("DataTable");
+            var rows = table.getElementsByTagName("tr");
+            document.getElementById("LastIndex").value = parseInt(rows.length) - 2;
+        }
+
+        function Delete(btn) {
+            $(btn).closest("tr").remove();
+            SetLastIndex();
+        }
+
+        function AddRow() {
+            var table = document.getElementById("DataTable");
+            if (!table) {
+                console.error("Table with ID 'DataTable' not found.");
+                return;
+            }
+
+            var rows = table.getElementsByTagName("tr");
+            var rowHtml = rows[rows.length - 1].outerHTML;
+
+            var lastIndexElement = document.getElementById("lastIndex");
+            var lastIndex = parseInt(lastIndexElement.value);
+            var newIndex = lastIndex + 1;
+
+            lastIndexElement.value = newIndex;
+
+            // استبدال الفهرس القديم بالجديد في الـ HTML
+            rowHtml = rowHtml.replaceAll('_' + lastIndex + '__', '_' + newIndex + '__');
+            rowHtml = rowHtml.replaceAll('[' + lastIndex + ']', '[' + newIndex + ']');
+            rowHtml = rowHtml.replaceAll('-' + lastIndex, '-' + newIndex);
+
+            var newRow = table.insertRow();
+            newRow.outerHTML = rowHtml;
+
+            var inputs = document.getElementsByClassName("formInput-" + newIndex);
+            for (var i = 0; i < inputs.length; i++) {
+                inputs[i].value = "";
+            }
+        }
+    </script>
+}

@@ -20,9 +20,28 @@ namespace FirstApp2.Areas.Admin.Controllers
             return View(new EmployeeModel());
         }
 
-        [HttpPost]
-        public IActionResult Save(EmployeeModel employee, string Email)
+
+
+        [AcceptVerbs("Get", "Post")]
+        public IActionResult VerifyEmail(string email)
         {
+            if(false)
+            {
+                return Json($"email {email} is already in use ");
+
+            }
+            return Json(true);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Save(EmployeeModel employee)
+        {
+            if (!ModelState.IsValid)
+                return View("Edit", employee);
+
+            
+            // تنفيذ عملية الحفظ هنا
 
             return View("Edit", employee);
         }
