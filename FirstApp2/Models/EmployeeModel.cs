@@ -3,11 +3,19 @@ using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
 using FirstApp2.Areas.CustomValidation;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FirstApp2.Models
 {
     public class EmployeeModel
     {
+        public EmployeeModel() 
+        {
+            TbDepartment = new DepartmentsModel();
+            EmployeeVacations = new HashSet<EmployeeVacation>();
+            TbPerson = new PersonModel();
+            EmployeeAllawances = new HashSet<EmployeeAllawanceModel>();
+        }
         [Key]
         [ValidateNever]
         public int Id { get; set; }
@@ -32,5 +40,16 @@ namespace FirstApp2.Models
        
         public string? ImageName { get; set; } = "";
 
+        public int DepartmentId { get; set; }
+
+        
+        public int PersonId { get; set; }
+        public PersonModel TbPerson { get; set; }
+       
+        // الربط مع القسم
+        public DepartmentsModel TbDepartment { get; set; }
+        public ICollection<EmployeeVacation> EmployeeVacations { get; set; }
+
+        public ICollection<EmployeeAllawanceModel> EmployeeAllawances { get; set; }
     }
 }

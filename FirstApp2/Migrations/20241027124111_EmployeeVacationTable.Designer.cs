@@ -4,6 +4,7 @@ using FirstApp2.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FirstApp2.Migrations
 {
     [DbContext(typeof(HrContext))]
-    partial class HrContextModelSnapshot : ModelSnapshot
+    [Migration("20241027124111_EmployeeVacationTable")]
+    partial class EmployeeVacationTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -22,23 +25,7 @@ namespace FirstApp2.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("FirstApp2.Models.AllawancesModel", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("TbAllawances");
-                });
-
-            modelBuilder.Entity("FirstApp2.Models.DepartmentsModel", b =>
+            modelBuilder.Entity("FirstApp2.Models.Departments", b =>
                 {
                     b.Property<int>("DepartmentId")
                         .ValueGeneratedOnAdd()
@@ -54,31 +41,6 @@ namespace FirstApp2.Migrations
                     b.HasKey("DepartmentId");
 
                     b.ToTable("TbDepartments");
-                });
-
-            modelBuilder.Entity("FirstApp2.Models.EmployeeAllawanceModel", b =>
-                {
-                    b.Property<int>("EmployeeAllawancesId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("EmployeeAllawancesId"));
-
-                    b.Property<string>("AllawancesId")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
-
-                    b.Property<int>("EmployeeId")
-                        .HasColumnType("int");
-
-                    b.HasKey("EmployeeAllawancesId");
-
-                    b.HasIndex("AllawancesId");
-
-                    b.HasIndex("EmployeeId");
-
-                    b.ToTable("EmployeeAllawances");
                 });
 
             modelBuilder.Entity("FirstApp2.Models.EmployeeModel", b =>
@@ -116,9 +78,6 @@ namespace FirstApp2.Migrations
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
-                    b.Property<int>("PersonId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasMaxLength(200)
@@ -127,9 +86,6 @@ namespace FirstApp2.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("DepartmentId");
-
-                    b.HasIndex("PersonId")
-                        .IsUnique();
 
                     b.ToTable("TbEmployees");
                 });
@@ -166,68 +122,15 @@ namespace FirstApp2.Migrations
                     b.ToTable("TbEmployeeVacation");
                 });
 
-            modelBuilder.Entity("FirstApp2.Models.PersonModel", b =>
-                {
-                    b.Property<int>("PersonId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PersonId"));
-
-                    b.Property<string>("Address")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
-
-                    b.Property<int>("Phone")
-                        .HasColumnType("int");
-
-                    b.HasKey("PersonId");
-
-                    b.ToTable("TbPersons");
-                });
-
-            modelBuilder.Entity("FirstApp2.Models.EmployeeAllawanceModel", b =>
-                {
-                    b.HasOne("FirstApp2.Models.AllawancesModel", "Tballawances")
-                        .WithMany("EmployeeAllawances")
-                        .HasForeignKey("AllawancesId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("FirstApp2.Models.EmployeeModel", "TbEmployee")
-                        .WithMany("EmployeeAllawances")
-                        .HasForeignKey("EmployeeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("TbEmployee");
-
-                    b.Navigation("Tballawances");
-                });
-
             modelBuilder.Entity("FirstApp2.Models.EmployeeModel", b =>
                 {
-                    b.HasOne("FirstApp2.Models.DepartmentsModel", "TbDepartment")
+                    b.HasOne("FirstApp2.Models.Departments", "TbDepartment")
                         .WithMany("Employees")
                         .HasForeignKey("DepartmentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("FirstApp2.Models.PersonModel", "TbPerson")
-                        .WithOne("TbEmployee")
-                        .HasForeignKey("FirstApp2.Models.EmployeeModel", "PersonId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("TbDepartment");
-
-                    b.Navigation("TbPerson");
                 });
 
             modelBuilder.Entity("FirstApp2.Models.EmployeeVacation", b =>
@@ -241,27 +144,14 @@ namespace FirstApp2.Migrations
                     b.Navigation("TbEmployee");
                 });
 
-            modelBuilder.Entity("FirstApp2.Models.AllawancesModel", b =>
-                {
-                    b.Navigation("EmployeeAllawances");
-                });
-
-            modelBuilder.Entity("FirstApp2.Models.DepartmentsModel", b =>
+            modelBuilder.Entity("FirstApp2.Models.Departments", b =>
                 {
                     b.Navigation("Employees");
                 });
 
             modelBuilder.Entity("FirstApp2.Models.EmployeeModel", b =>
                 {
-                    b.Navigation("EmployeeAllawances");
-
                     b.Navigation("EmployeeVacations");
-                });
-
-            modelBuilder.Entity("FirstApp2.Models.PersonModel", b =>
-                {
-                    b.Navigation("TbEmployee")
-                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }
